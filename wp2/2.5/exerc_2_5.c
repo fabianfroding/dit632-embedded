@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-#define MAX 10 // 100
+#define MAX 100
 #define MAXNUMBER 20
 
 // ------ Function declaration ----------
