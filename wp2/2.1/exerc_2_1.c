@@ -29,13 +29,9 @@ int main(int argc, char *argv[]) {
         char str2[MAX];
 
         if (doesFileExist(argv[1])) {
-            FILE* fPointer = fopen(argv[1], "r"); // "r" for read
+            FILE* fPointer = fopen(argv[1], "r"); // "r" for read.
 
-            // Ask TA: Read only first line or entire .txt file?
             fgets(str1, MAX + 1, fPointer); // +1. Even though MAX is set to 20, only counts 19 from .txt file.
-            /*while (!feof(fPointer)) {
-                fgets(str1, MAX, fPointer);
-            }*/
 
             copyString(str1, str2);
             fclose(fPointer);

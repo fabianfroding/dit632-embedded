@@ -20,21 +20,6 @@ int compareStrings(char *string1, char *string2) {
     return 1;
 }
 
-/** Solution 2.
-int compareStringsEx(char *string1, char *string2) {
-    char *p1 = (char*)string1;
-    char *p2 = (char*)string2;
-
-    while (*p1 != '\0') {
-        if (*p1 != *p2)
-            return 0;
-        p1++;
-        p2++;
-    }
-    return 1;
-}
-**/
-
 int main(int argc, char *argv[]) {
     if (argc == NUM_ARGS + 1) {
         char string1[MAX];

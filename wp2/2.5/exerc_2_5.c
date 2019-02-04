@@ -32,32 +32,6 @@ void count_frequency(int *tab, int *freq) {
     }
 }
 
-// Solution 2
-void count_frequencyEx(int *tab, int *freq) {
-    for (int i = 0; i < MAX; i++) {
-        //printf("tab[%d]: %d\n", i, tab[i]);
-        freq[i] = 0;
-        int count = 0;
-        for (int j = 0; j < MAX; j++) {
-            if (tab[i] == tab[j]) {
-                //printf("tab[%d]: %d == tab[%d]: %d\n", i, tab[i], j, tab[j]);
-                freq[j] = 0;
-                count++;
-            }
-        }
-        if (count > 0) {
-            freq[i] = count;
-        }
-    }
-
-    for (int i = 0; i < MAX; i++) {
-        if (freq[i] != 0) {
-            //printf("freq[%d](%d): %d\n", i, tab[i], freq[i]);
-        }
-    }
-
-}
-
 // Use pointer
 void draw_histogram(int *freq) {
     for (int i = 0; i < MAXNUMBER; i++) {
