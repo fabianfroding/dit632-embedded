@@ -26,5 +26,5 @@ int main()
     printf("The value of the label array (address) is: %p\n", &arr);                  //address
     printf("The first integer in the array is (array[0]): %d\n", firstValue);         //first value
     printf("The size of an integer (number of bytes) is: %lu\n", sizeof(firstValue)); //size of first value
-    printf("The size of the whole array is: %d\n", sizeof(arr));                      //array size
+    printf("The size of the whole array is: %lu\n", sizeof(arr));                     //array size
 }
