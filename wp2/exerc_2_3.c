@@ -1,4 +1,12 @@
-//code 12884
+/* ==================================== 
+File name: exerc_2_3.c
+Date: 2019-02-7
+Group Number:02
+Members that contributed:
+Fabian
+Oliver
+Demonstration code: [12884] 
+====================================== */
 #include <stdio.h>
 #include <string.h>
 

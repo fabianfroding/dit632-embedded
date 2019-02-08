@@ -1,4 +1,12 @@
-// exerc_2_2.c
+/* ==================================== 
+File name: exerc_2_2.c
+Date: 2019-02-7
+Group Number:02
+Members that contributed:
+Fabian
+Oliver
+Demonstration code: [none] 
+====================================== */
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

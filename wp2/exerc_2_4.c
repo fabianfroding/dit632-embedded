@@ -1,5 +1,12 @@
-// exerc_2_4.c
-//code = 11968
+/* ==================================== 
+File name: exerc_2_4.c
+Date: 2019-02-7
+Group Number:02
+Members that contributed:
+Fabian 
+Oliver
+Demonstration code: [11968] 
+====================================== */
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
