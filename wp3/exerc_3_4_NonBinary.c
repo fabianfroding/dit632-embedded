@@ -3,9 +3,8 @@
 #include <string.h>
 #include <stdbool.h>
 #include <ctype.h>
-#include <time.h>
 
-#define FILENAME_DB "db.bin"
+#define FILENAME_DB "db.txt"
 
 // -----Typedefs -------
 typedef struct {
@@ -57,17 +56,15 @@ PERSON input_record() {
 // Creats a file and write a first record
 void write_new_file(PERSON *inrecord) {
     FILE *fPointer;
-    fPointer = fopen(FILENAME_DB, "wb");
-    fwrite(&inrecord, sizeof(PERSON), 1, fPointer);
-
-    //fprintf(fPointer, "%s\n%s\n%s\n", inrecord -> firstname, inrecord -> famnamne, inrecord -> pers_number);
+    fPointer = fopen(FILENAME_DB, "w");
+    fprintf(fPointer, "%s\n%s\n%s\n", inrecord -> firstname, inrecord -> famnamne, inrecord -> pers_number);
     fclose(fPointer);
 }
 
 // print out all persons in the file
 void printfile() {
     FILE *fPointer;
-    fPointer = fopen(FILENAME_DB, "rb");
+    fPointer = fopen(FILENAME_DB, "r");
     
     char line[20];
     printf("//========== Persons\n\n");
@@ -100,7 +97,6 @@ void append_file(PERSON *inrecord) {
 }
 
 int main() {
-    srand(time(NULL));
     PERSON ppost;
     char input[1];
     for (;;) {
