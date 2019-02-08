@@ -1,30 +1,46 @@
+/* ==================================== 
+File name: exerc_2_5.c
+Date: 2019-02-7
+Group Number:02
+Members that contributed:
+Fabian
+Oliver
+Demonstration code: [12890] 
+====================================== */
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
 
-#define MAX 100
+#define MAX 10
 #define MAXNUMBER 20
 
 // ------ Function declaration ----------
 // Comparison func for qsort
-int compare(const void *a, const void *b) {
-  return (*(int*)a - *(int*)b);
+int compare(const void *a, const void *b)
+{
+    return (*(int *)a - *(int *)b);
 }
 
 // Use pointer to fill the table
-void create_random(int *tab) {
-    for (int i = 0; i < MAX; i++) {
+void create_random(int *tab)
+{
+    for (int i = 0; i < MAX; i++)
+    {
         tab[i] = rand() % (MAXNUMBER + 1);
         //printf("%d\n", tab[i]); // Uncomment this to display the random values.
     }
 }
 
 // Use pointer
-void count_frequency(int *tab, int *freq) {
-    for (int i = 0; i < MAXNUMBER; i++) {
+void count_frequency(int *tab, int *freq)
+{
+    for (int i = 0; i <= MAXNUMBER; i++)
+    {
         int count = 0;
-        for (int j = 0; j < MAX; j++) {
-            if (i == tab[j]) {
+        for (int j = 0; j < MAX; j++)
+        {
+            if (i == tab[j])
+            {
                 count++;
             }
         }
@@ -33,20 +49,25 @@ void count_frequency(int *tab, int *freq) {
 }
 
 // Use pointer
-void draw_histogram(int *freq) {
-    for (int i = 0; i < MAXNUMBER; i++) {
-        if (freq[i] != 0) {
+void draw_histogram(int *freq)
+{
+    for (int i = 0; i <= MAXNUMBER; i++)
+    {
+        if (freq[i] != 0)
+        {
             printf("\n%d ", i, freq[i]);
-            for (int j = 0; j < freq[i]; j++) {
+            for (int j = 0; j < freq[i]; j++)
+            {
                 printf("x", j);
             }
         }
     }
 }
 
-int main () {
+int main()
+{
     int table[MAX], n;
-    int frequency[MAXNUMBER];
+    int frequency[MAXNUMBER + 1];
     srand(time(NULL)); // Give seed
 
     create_random(table);

@@ -1,4 +1,12 @@
-// exerc_2_4.c
+/* ==================================== 
+File name: exerc_2_4.c
+Date: 2019-02-7
+Group Number:02
+Members that contributed:
+Fabian 
+Oliver
+Demonstration code: [11968] 
+====================================== */
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -17,23 +25,46 @@ int main()
     int start, end, arrLength;
     bool isPal = true;
 
-    arrLength = strlen(word);
+    arrLength = strlen(word) - 1;
     start = 0;
     end = arrLength - 1;
+    printf("arr is %d\n", arrLength);
 
-    while (start < end)
+    if (arrLength % 2 == 0)
     {
-        if (word[start] == word[end])
+        printf("%s is an even number word\n", word);
+        while (start < end)
         {
-            isPal = true;
+            if (word[start] == word[end])
+            {
+                isPal = true;
+            }
+            else
+            {
+                isPal = false;
+                break;
+            }
+            ++start;
+            --end;
         }
-        else
+    }
+    else
+    {
+        printf("%s is an odd number word\n", word);
+        while (start <= end)
         {
-            isPal = false;
-            break;
+            if (word[start] == word[end])
+            {
+                isPal = true;
+            }
+            else
+            {
+                isPal = false;
+                break;
+            }
+            ++start;
+            --end;
         }
-        ++start;
-        --end;
     }
 
     if (isPal)
