@@ -3,15 +3,18 @@
 #include <string.h>
 #include <stdbool.h>
 #include <ctype.h>
-#include <time.h>
 
 #define FILENAME_DB "db.bin"
+#define PERS_NUM_LEN 13
+#define NAME_LEN 20
+
+// PERS NUM FOR TESTING: 198112189876
 
 // -----Typedefs -------
 typedef struct {
-    char firstname[20];
-    char famnamne[20];
-    char pers_number[13]; // yyyymmddnnnc // Changed from 13 to 12. Why 13?
+    char firstname[NAME_LEN];
+    char famnamne[NAME_LEN];
+    char pers_number[PERS_NUM_LEN]; // yyyymmddnnnc
 } PERSON;
 
 // Function declaration (to be extend)
@@ -54,53 +57,64 @@ PERSON input_record() {
     return person;
 }
 
-// Creats a file and write a first record
+// Creates a file and write a first record
 void write_new_file(PERSON *inrecord) {
-    FILE *fPointer;
-    fPointer = fopen(FILENAME_DB, "wb");
-    fwrite(&inrecord, sizeof(PERSON), 1, fPointer);
-
-    //fprintf(fPointer, "%s\n%s\n%s\n", inrecord -> firstname, inrecord -> famnamne, inrecord -> pers_number);
-    fclose(fPointer);
+    FILE *fP;
+    fP = fopen(FILENAME_DB, "wb");
+    printf("%s\n%s\n%s\n", inrecord -> firstname, inrecord -> famnamne, inrecord -> pers_number);
+    fwrite(inrecord, sizeof(PERSON), 1, fP);
+    fclose(fP);
 }
 
 // print out all persons in the file
 void printfile() {
-    FILE *fPointer;
-    fPointer = fopen(FILENAME_DB, "rb");
-    
-    char line[20];
+    FILE *fP;
+    fP = fopen(FILENAME_DB, "rb");
+    PERSON *person = malloc(sizeof(PERSON));
     printf("//========== Persons\n\n");
-    int lineCount = 0;
-    while (fgets(line,50,fPointer) != NULL) {
-        printf(line);
-        if (lineCount >= 2) {
-            printf("\n");
-            lineCount = 0;
-        } else {
-            lineCount++;
+    if (fP != NULL) {
+        for (int i = 0; !feof(fP); ++i) {
+            if (fread(person, sizeof(PERSON), 1, fP) != 1) {
+                break;
+            }
+            printf("%s\n%s\n%s\n\n", person -> firstname, person -> famnamne, person -> pers_number);
         }
     }
     printf("//==========\n");
-    
-    fclose(fPointer);
+    fclose(fP);
 }
 
 // print out person if in list
 void search_by_firstname(char *name) {
-
+    FILE *fP;
+    int matches = 0;
+    fP = fopen(FILENAME_DB, "rb");
+    PERSON *person = malloc(sizeof(PERSON));
+    printf("//========== Search Result:\n\n");
+    if (fP != NULL) {
+        for (int i = 0; !feof(fP); ++i) {
+            if (fread(person, sizeof(PERSON), 1, fP) != 1) {
+                break;
+            }
+            if ((strcmp(person -> firstname, name) == 0) || (strcmp(person -> famnamne, name) == 0)) {
+                matches++;
+                printf("%s\n%s\n%s\n\n", person -> firstname, person -> famnamne, person -> pers_number);
+            }
+        }
+    }
+    printf("Found %d matches.\n//==========\n", matches);
+    fclose(fP);
 }
 
 // appends a new person to the file
 void append_file(PERSON *inrecord) {
-    FILE *fPointer;
-    fPointer = fopen(FILENAME_DB, "a");
-    fprintf(fPointer, "%s\n%s\n%s\n", inrecord -> firstname, inrecord -> famnamne, inrecord -> pers_number);
-    fclose(fPointer);
+    FILE *fP;
+    fP = fopen(FILENAME_DB, "ab");
+    fwrite(inrecord, sizeof(PERSON), 1, fP);
+    fclose(fP);
 }
 
 int main() {
-    srand(time(NULL));
     PERSON ppost;
     char input[1];
     for (;;) {
@@ -115,7 +129,9 @@ int main() {
         gets(input);
 
         if (strcmp(input, "1") == 0) {
-            ppost = input_record();
+            strcpy(ppost.firstname, "DummyFirstName");
+            strcpy(ppost.famnamne, "DummyFamName");
+            strcpy(ppost.pers_number, "198112189876");
             write_new_file(&ppost);
         }
         else if (strcmp(input, "2") == 0) {
@@ -123,8 +139,10 @@ int main() {
             append_file(&ppost);
         }
         else if (strcmp(input, "3") == 0) {
-            char firstName[20];
-            search_by_firstname(firstName);
+            char name[NAME_LEN];
+            printf("Enter a first name or family name to search for:\n");
+            gets(name);
+            search_by_firstname(name);
         }
         else if (strcmp(input, "4") == 0) {
             printfile();
