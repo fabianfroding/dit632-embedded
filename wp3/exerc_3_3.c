@@ -54,13 +54,48 @@ int main(int argc, char *argv[])
 // ==== End of main ======================================
 REGTYPE *random_list(void)
 {
-    int nr, i = 0;
-    REGTYPE *top, *old, *item;
-    return (top);
+    int i;
+    REGTYPE *prevNode = NULL, *nextNode = NULL, *startNode = NULL;
+
+    for (i = 0; i < MAX; i++)
+    {
+        REGTYPE *pItem = malloc(sizeof(REGTYPE));
+        //assign value to current node
+        int randomNumber = rand() % 100;
+        (*pItem).number = randomNumber;
+        //special case for start node and end node
+        if (i == 0)
+        { //item is curently at start
+            (*pItem).prev = NULL;
+            startNode = pItem;
+            prevNode = pItem;
+        }
+        else
+        {
+            //assign previous nodes nextNode to current node
+            (*prevNode).next = pItem;
+            //assign current node's previous node to prevNode
+            (*pItem).prev = prevNode;
+            (*pItem).next = NULL;
+            //make current node prev node
+            prevNode = pItem;
+        }
+    }
+    return (startNode);
 }
 
 //==========================================================
 REGTYPE *add_first(REGTYPE *temp, int data)
 {
-    // Adds a record first i list and set the field tal to data
+    REGTYPE *pItem = malloc(sizeof(REGTYPE));
+    //add number to data structure
+    (*pItem).number = data;
+    //assign temp node's previous node to current node
+    (*temp).prev = pItem;
+    //assign current node's next node to temp
+    (*pItem).next = temp;
+    //assign current node's prev nodes to null
+    (*pItem).prev = NULL;
+
+    return (pItem);
 }
