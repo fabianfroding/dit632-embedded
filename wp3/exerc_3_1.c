@@ -70,39 +70,40 @@ void turn(ROBOT *pRobot)
 
 int main()
 {
-    char player[10];
     printf("===========\nRobo\n===========\n*if you wish to quit at any point in the game, press 'q'*...\n--------------------------------------------------------------\n");
     ROBOT robot = {0, 0, N};
     ROBOT *pRobot = NULL;
     pRobot = &robot;
-
-    do
+    char journey[256];
+    printf("--> enter a string of 'm' to move and 't' to turn...\n--> to move your Mr.Robot around\n");
+    scanf("%s", &journey);
+    int arrayLength = sizeof(journey) / sizeof(journey[0]);
+    for (int i = 0; i < arrayLength; i++)
     {
-        printf("--> press 'm' to move and 't' to turn...\n\n");
-        scanf("%s", &player);
-        if (player[0] == 'm')
+        /* code */
+        if (journey[i] == 'm')
         {
-            move(pRobot);
+            if (!((robot.xpos == 0 && robot.dir == W) || (robot.ypos == 100 && robot.dir == O) || (100 == robot.ypos && robot.dir == N) || (robot.xpos == 0 && robot.dir == S)))
+            {
+                printf("--> [MOVING!]\n");
+                move(pRobot);
+                printRobot(robot);
+            }
+            else
+            {
+                printf("[x]--> [Cannot exceed the 0-100 range!]\n");
+            }
         }
-        else if (player[0] == 't')
+        else if (journey[i] == 't')
         {
             turn(pRobot);
-        }
-
-        if (player[0] == 't' || player[0] == 'm')
-        {
-            printf("[success] ");
+            printf("--> [Turning!]\n");
             printRobot(robot);
         }
-        else if (player[0] == 'q')
-        {
-            printf("Robot says 'bye'");
-        }
-        else
-        {
-            printf("[error] you typed '%s'. press 'm' to move and 't' to turn...\n\n\n", player);
-        }
-    } while (player[0] != 'q');
+    }
+
+    printf("--> [Finally]");
+    printRobot(robot);
 }
 
 /*
