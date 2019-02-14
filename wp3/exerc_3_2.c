@@ -5,7 +5,7 @@ Group Number:02
 Members that contributed:
 Fabian
 Oliver
-Demonstration code: [none] 
+Demonstration code: [29399] 
 ====================================== */
 #include <stdio.h>
 
@@ -52,7 +52,7 @@ int search_number(int number, int tab[], int size)
 
 int main()
 {
-    int test[] = {1, 2, 34, 5, 67, 3, 23, 12, 13, 10};
+    int test[] = {1, 2, 67, 5, 67, 3, 23, 12, 13, 10};
 
     search_number(SEARCH_NUM, test, sizeof(test) / sizeof(test[0]));
 
