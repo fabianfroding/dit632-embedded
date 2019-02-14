@@ -39,7 +39,13 @@ int main(int argc, char *argv[])
         printf("\n Post nr %d : %d", nr++, akt_post->number);
         akt_post = akt_post->next;
     }
-
+    akt_post = add_first(head, 98);
+    int nr2 = 0;
+    while (akt_post != NULL)
+    {
+        printf("\n Post nr %d : %d", nr2++, akt_post->number);
+        akt_post = akt_post->next;
+    }
     // --- Free of allocated memory ---
     while ((akt_post = head) != NULL)
     {
