@@ -23,9 +23,12 @@ void sort(int number, int tab[])
 {
     for (int i = 0; i < number; i++)
     {
+        // Set each index in array as temporary min value.
         int min_idx = i;
+        // Compare the temp min value with each other value in the array.
         for (int j = i; j < number; j++)
         {
+            // If value of iterated index is less then min_idx, set to the index of newly found min value.
             if (tab[j] < tab[min_idx])
                 min_idx = j;
         }
@@ -33,9 +36,11 @@ void sort(int number, int tab[])
         int temp = tab[min_idx];
         tab[min_idx] = tab[i];
         tab[i] = temp;
+        // Repeat this process for each array element. This is basically selection sort.
     }
 }
 
+// Returns index of first occurence of number to search for, if not found, return -1.
 int search_number(int number, int tab[], int size)
 {
     for (int i = 0; i < size; i++)
