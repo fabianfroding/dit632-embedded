@@ -16,8 +16,17 @@ void printBits(size_t const size, void const * const ptr) {
 
 
 int main(void) {
-    int i = 1;
-    printf("%u", i);
+    int i = i;
+    //printf("%u", sizeof(i)); // %u unsigned integer.
+    for (int i = sizeof(i) - 1; i >= 0; i--) {
+        printf("for i: %u\n", i);
+        for (int j = 7; j >= 0; j--) {
+            
+            printf("for j: %u\n", );
+        }
+        printf(" ");
+    }
+    puts("");
     //printBits(sizeof(i), &i);
     i = 2;
     //printBits(sizeof(i), &i);
