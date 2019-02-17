@@ -5,7 +5,7 @@ Group Number:02
 Members that contributed:
 Oliver
 Fabian
-Demonstration code: [none] 
+Demonstration code: [29413] 
 ====================================== */
 #include <stdio.h>
 enum DIRECTION
@@ -75,7 +75,16 @@ int main()
     ROBOT *pRobot = NULL;
     pRobot = &robot;
     char journey[256];
-    printf("--> enter a string of 'm' to move and 't' to turn...\n--> to move your Mr.Robot around\n");
+    int x = -1, y = -1;
+    do
+    {
+        printf("--> enter x-coordintae startpoint for Mr.Robot (0-100)\n");
+        scanf("%d", &x);
+        printf("--> enter y-coordintae startpoint for Mr.Robot (0-100)\n");
+        scanf("%d", &y);
+    } while ((100 < x || x < 0) || (100 < y || y < 0));
+
+    printf("--> enter a string of 'm' to move and 't' to turn...\n");
     scanf("%s", &journey);
     int arrayLength = sizeof(journey) / sizeof(journey[0]);
     for (int i = 0; i < arrayLength; i++)
@@ -83,16 +92,9 @@ int main()
         /* code */
         if (journey[i] == 'm')
         {
-            if (!((robot.xpos == 0 && robot.dir == W) || (robot.ypos == 100 && robot.dir == O) || (100 == robot.ypos && robot.dir == N) || (robot.xpos == 0 && robot.dir == S)))
-            {
-                printf("--> [MOVING!]\n");
-                move(pRobot);
-                printRobot(robot);
-            }
-            else
-            {
-                printf("[x]--> [Cannot exceed the 0-100 range!]\n");
-            }
+            printf("--> [MOVING!]\n");
+            move(pRobot);
+            printRobot(robot);
         }
         else if (journey[i] == 't')
         {
