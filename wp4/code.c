@@ -2,11 +2,11 @@
 #include <stdlib.h>
 #include <ctype.h>
 
-//================================================== DEFINED
+//================================================== DEFINITIONS
 #define NUM_ARGS 5
 // Variable ranges.
 #define ENGINE_ON_MAX 1
-#define GEAR_POS_MAX 4
+#define GEAR_POS_MAX 122
 #define KEY_POS_MAX 2
 #define BRAKE1_MAX 1
 #define BRAKE2_MAX 1
