@@ -5,7 +5,7 @@ Group Number:02
 Members that contributed:
 Oliver
 Fabian
-Demonstration code: [None] 
+Demonstration code: [] 
 ====================================== */
 #include <stdio.h>
 #include <stdlib.h>
@@ -24,8 +24,13 @@ Demonstration code: [None]
 //================================================== FUNCTIONS
 void printBits(unsigned int x)
 {
+    // Loop through the binary values of an int.
     for (int i = (sizeof(int) * 8) - 1; i >= 0; i--)
     {
+        /*
+            Using 1u to validate unsigned int.
+            We shift binary of 1 i number of times, and use AND operator for binary of x. If these values match, we print 1, otherwise print 0.
+        */
         (x & (1u << i)) ? putchar('1') : putchar('0');
     }
     printf("\n");
