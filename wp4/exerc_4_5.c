@@ -35,7 +35,6 @@ int main(void)
     unsigned char val = REG8(IN_PORTB);
     while (1)
     {
-
         _delay_ms(BLINK_DELAY_MS); // In util/delay.h
     }
 }
