@@ -1,0 +1,110 @@
+mod:exerc_4_4_xcc:O12:exerc_4_4_xcc.o12
+seg:text:139
+seg:bss:0
+seg:data:0
+seg:rodata:21
+C:text	A7F609C0873D
+C:text	EC823BEC843BCE0000341600001B863D
+C:text	EC848C000F2E058C00002C0487C7200D
+C:text	EC82AC84260487C72003CC00013D
+C:text	1B9A87C76C84CE0000341600001B8216
+C:text	00006C80EC803BEC843B1600001B848C
+C:text	0000270CEC803B1600001B82EC806C82
+C:text	87C76C84EC848C00642D092013EE8408
+C:text	6E8420F0EC84C300018300016C8420ED
+C:text	1820FFBB1B863D
+C:rodata	256420202D2D2D202025780A00
+C:rodata	48454C4C4F4F4F00
+RG:text:exerc_4_4_xcc:00000011:O:W:_printf:67
+RG:text:exerc_4_4_xcc:0000003F:O:W:_puts:162
+RG:text:exerc_4_4_xcc:00000044:O:W:_read:169
+RG:text:exerc_4_4_xcc:0000004F:O:W:_check:177
+RG:text:exerc_4_4_xcc:0000005C:O:W:_write:185
+RL:text:exerc_4_4_xcc:0000000D:O:W:00000000:rodata:65
+RL:text:exerc_4_4_xcc:0000003B:O:W:0000000D:rodata:160
+G:text:exerc_4_4_xcc:00000034:_main
+G:text:exerc_4_4_xcc:00000016:_check
+G:text:exerc_4_4_xcc:00000006:_write
+G:text:exerc_4_4_xcc:00000000:_read
+SY:C:M:exerc_4_4_xcc$C:/Users/Fabian/Studies/GU/SEM/Term04/DevelopmentOfEmbeddedAndRealTimeSystems/assignments/derts-assign/wp4/exerc_4_4_xcc.c
+SY:C:F:exerc_4_4_xcc:text:_read:00000000:9
+SY:C:X:exerc_4_4_xcc:9:1:text:0
+SY:C:X:exerc_4_4_xcc:11:1:text:5
+SY:C:Z:exerc_4_4_xcc:11:1:text:5
+SY:C:E:exerc_4_4_xcc:text:_read:00000006:11
+SY:C:F:exerc_4_4_xcc:text:_write:00000006:13
+SY:C:X:exerc_4_4_xcc:13:1:text:6
+SY:C:S:F:exerc_4_4_xcc:write:_write:(typ0)(typ11)
+SY:C:S:L:exerc_4_4_xcc:write:input:2:(typ11)
+SY:C:S:F:exerc_4_4_xcc:__func__:___func__:(typ11)
+SY:C:X:exerc_4_4_xcc:14:37:text:6
+SY:C:X:exerc_4_4_xcc:15:1:text:15
+SY:C:Z:exerc_4_4_xcc:15:1:text:15
+SY:C:E:exerc_4_4_xcc:text:_write:00000016:15
+SY:C:F:exerc_4_4_xcc:text:_check:00000016:17
+SY:C:X:exerc_4_4_xcc:17:1:text:16
+SY:C:S:F:exerc_4_4_xcc:check:_check:(typ11)(typ11)(typ11)
+SY:C:S:L:exerc_4_4_xcc:check:input:2:(typ11)
+SY:C:S:L:exerc_4_4_xcc:check:new:4:(typ11)
+SY:C:S:F:exerc_4_4_xcc:__func__:___func__:(typ11)
+SY:C:X:exerc_4_4_xcc:18:4:text:16
+SY:C:X:exerc_4_4_xcc:20:4:text:26
+SY:C:X:exerc_4_4_xcc:24:1:text:33
+SY:C:Z:exerc_4_4_xcc:24:1:text:33
+SY:C:E:exerc_4_4_xcc:text:_check:00000034:24
+SY:C:F:exerc_4_4_xcc:text:_main:00000034:27
+SY:C:X:exerc_4_4_xcc:27:1:text:34
+SY:C:S:F:exerc_4_4_xcc:main:_main:(typ0)(typ0)
+SY:C:S:F:exerc_4_4_xcc:__func__:___func__:(typ11)
+SY:C:S:L:exerc_4_4_xcc:main:i:4:(typ11)
+SY:C:S:L:exerc_4_4_xcc:main:old:2:(typ11)
+SY:C:S:L:exerc_4_4_xcc:main:new:0:(typ11)
+SY:C:X:exerc_4_4_xcc:28:8:text:36
+SY:C:X:exerc_4_4_xcc:32:15:text:3A
+SY:C:X:exerc_4_4_xcc:33:7:text:43
+SY:C:X:exerc_4_4_xcc:34:14:text:43
+SY:C:X:exerc_4_4_xcc:35:5:text:48
+SY:C:X:exerc_4_4_xcc:36:12:text:58
+SY:C:X:exerc_4_4_xcc:37:12:text:60
+SY:C:X:exerc_4_4_xcc:39:8:text:64
+SY:C:X:exerc_4_4_xcc:39:15:text:68
+SY:C:X:exerc_4_4_xcc:39:24:text:71
+SY:C:X:exerc_4_4_xcc:40:15:text:78
+SY:C:X:exerc_4_4_xcc:44:1:text:88
+SY:C:Z:exerc_4_4_xcc:44:1:text:88
+SY:C:E:exerc_4_4_xcc:text:_main:0000008B:44
+SY:C:T:  typ0 V (-1)
+SY:C:T:  typ1 L (4)
+SY:C:T:  typ2 l (4)
+SY:C:T:  typ3 C (1)
+SY:C:T:  typ4 c (1)
+SY:C:T:  typ5 S (2)
+SY:C:T:  typ6 s (2)
+SY:C:T:  typ7 g (4)
+SY:C:T:  typ8 G (4)
+SY:C:T:  typ9 h (4)
+SY:C:T:  typ10 R (2)
+SY:C:T:  typ11 I (2)
+SY:C:T:  typ12 i (2)
+SY:C:T:  typ13 E (2)
+SY:C:T:  typ14 F (2)
+SY:C:T:  typ15 P (2)
+SY:C:T:exerc_4_4_xcc: typ16-exerc_4_4_xcc Z (4)U float_long {\
+f:(0):(typ8);\
+l:(0):(typ1);\
+}
+SY:C:T:exerc_4_4_xcc: typ17-exerc_4_4_xcc Z (12)S _iobuf {\
+_base:(0):(typ18-exerc_4_4_xcc);\
+_ptr:(2):(typ19-exerc_4_4_xcc);\
+_filename:(4):(typ20-exerc_4_4_xcc);\
+_cnt:(6):(typ12);\
+_flag:(8):(typ6);\
+_bufsiz:(10):(typ12);\
+}
+SY:C:T:exerc_4_4_xcc: typ18-exerc_4_4_xcc a *(typ3)
+SY:C:T:exerc_4_4_xcc: typ19-exerc_4_4_xcc a *(typ3)
+SY:C:T:exerc_4_4_xcc: typ20-exerc_4_4_xcc a *(typ3)
+SY:C:T: typ2 l (4)
+SY:C:T: typ4 c (1)
+SY:C:T: typ6 s (2)
+e
