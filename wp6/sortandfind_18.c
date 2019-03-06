@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <pthread.h>
+#include <time.h>
 
 #define num_elems 200
 int array[200];
@@ -24,7 +25,7 @@ int main()
 	scanf("%d", &max_value);	 //<--23
 
 	pthread_create(&tid, &attr, runner, NULL);
-	pthread_join(tid, NULL); //<--26
+	//pthread_join(tid, NULL); //<--26
 
 	int c, d, swap;
 
