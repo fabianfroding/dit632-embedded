@@ -1,5 +1,5 @@
 /* ==================================== 
-File name: exerc_6_4.c
+File name: exerc_6_5.c
 Date: 2019-03-12
 Group Number:02
 Members that contributed:
@@ -51,23 +51,29 @@ void *put()
             if (write_pos == MAX - 1)
             {
                 buffer[write_pos] = letter;
-                letter++;
                 write_pos = 0;
                 count++;
             }
             else
             {
                 buffer[write_pos] = letter;
-                letter++;
                 write_pos++;
                 count++;
             }
+            printf("Put in: %c", letter);
             if (letter == 'z')
             {
                 letter = 'a';
             }
-            printf("put\n");
+            else
+            {
+                letter++;
+            }
             pthread_mutex_unlock(&flag); //unlock mutex
+        }
+        else
+        {
+            printf("FULL\n");
         }
     }
 }
@@ -108,6 +114,10 @@ void *fetch()
             }
             pthread_mutex_unlock(&flag);
         }
+        else
+        {
+            printf("EMPTY\n");
+        }
     }
 }
 
@@ -120,8 +130,11 @@ int main()
     //"fetch" thread for removing out of buffer
     pthread_create(&consumer, NULL, fetch, NULL);
 
+    while (1)
+    {
+        printf("Buffer Shop \n");
+    }
+
     pthread_join(producer, NULL);
     pthread_join(consumer, NULL);
-
-    return 0;
 }
