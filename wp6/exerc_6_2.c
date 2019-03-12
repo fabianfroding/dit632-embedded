@@ -1,11 +1,11 @@
 /* ==================================== 
 File name: exerc_6_2.c
 Date: 2019-03-12
-Group Number:02
+Group Number: 02
 Members that contributed:
 Fabian
 Oliver
-Demonstration code: [none] 
+Demonstration code: [13191] 
 ====================================== */
 #include <stdio.h>
 #include <stdlib.h>
