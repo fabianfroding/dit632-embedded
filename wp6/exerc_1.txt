@@ -1,3 +1,12 @@
+/* ==================================== 
+File name: exerc_6_1.c
+Date: 2019-03-12
+Group Number:02
+Members that contributed:
+Fabian
+Oliver
+Demonstration code: [none] 
+====================================== */
 //=============== 1.1.
 2 threads are created during the execution of the program. One for the main thread and one for the thread "tid", which executes the runner function.
 

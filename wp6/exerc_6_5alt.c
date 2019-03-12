@@ -1,59 +1,127 @@
-// Skeleton for exercise nr 6 in WP 6 course DIT165.
-// File skeleton_wp6_6.c
+/* ==================================== 
+File name: exerc_6_4.c
+Date: 2019-03-12
+Group Number:02
+Members that contributed:
+Fabian
+Oliver
+Demonstration code: [17055] 
+====================================== */
 #include <stdio.h>
 #include <stdlib.h>
 #include <pthread.h>
-pthread_mutex_t count_mutex = PTHREAD_MUTEX_INITIALIZER;
-pthread_cond_t not_empty = PTHREAD_COND_INITIALIZER;
-pthread_cond_t not_full = PTHREAD_COND_INITIALIZER;
 
 // Global buffer and corresponding counters.
 char letter = 'a'; //the starting letter
 #define MAX 10     //buffer size
-
-unsigned short count = 0;
+int count = 0;
 
 char buffer[MAX];  // circular buffer
 int write_pos = 0; // index for next character to be put in buffer (put)
 int read_pos = 0;  // index for next character to be read ( fetch )
 
-int put_flag = 0;
-int fetch_flag = 0;
+pthread_mutex_t flag = PTHREAD_MUTEX_INITIALIZER;
+// pthread_cond_t not_empty = PTHREAD_COND_INITIALIZER;
 
 void *put();
 void *fetch();
 
-int main()
-{
-    int i;
-    while (1)
-    {
-    }
-}
-
 void *put()
 {
+    /**
+     * 1. if buffer is full, dont write
+     * 2. else 
+     * 3. if write_pos = MAX-1 (last spot in buffer), 
+     * 3.1 lock mutex
+     * 3.2 write to buffer
+     * 3.3 set write_pos to 0
+     * 3.4 unlock mutex
+     * 4. else 
+     * 4.1 lock mutex
+     * 4.2 write to buffer
+     * 4.3 increment write_pos
+     * 4.4 unlock mutex
+    */
+
     while (1)
     {
-        while (fetch_flag == 1)
+        if (count < MAX) //if buffer is not full
         {
+            pthread_mutex_lock(&flag); //lock mutex
+            if (write_pos == MAX - 1)
+            {
+                buffer[write_pos] = letter;
+                letter++;
+                write_pos = 0;
+                count++;
+            }
+            else
+            {
+                buffer[write_pos] = letter;
+                letter++;
+                write_pos++;
+                count++;
+            }
+            if (letter == 'z')
+            {
+                letter = 'a';
+            }
+            printf("put\n");
+            pthread_mutex_unlock(&flag); //unlock mutex
         }
-
-        put_flag = 1;
-        /*starte implementing put*/
-        put_flag = 0;
     }
 }
 void *fetch()
 {
+    /**
+     * 1. if buffer is empty, dont read
+     * 2. else 
+     * 3. if read_pos = MAX-1 (last spot in buffer), 
+     * 3.1 lock mutex
+     * 3.2 read from buffer, decrement count
+     * 3.3 set read_pos to 0
+     * 3.4 unlock mutex
+     * 4. else 
+     * 4.1 lock mutex
+     * 4.2 read from buffer
+     * 4.3 increment read_pos, decrement count;
+     * 4.3 unlock mutex
+    */
     while (1)
     {
-        while (put_flag == 1)
+        if (count > 0) //if buffer is not empty
         {
+            pthread_mutex_lock(&flag);
+            if (read_pos == MAX - 1)
+            {
+                printf("letter\tread_pos\tcount\n");
+                printf("%c\t%d\t%d\n", buffer[read_pos], read_pos, count);
+                read_pos = 0;
+                count--;
+            }
+            else
+            {
+                printf("letter\tread_pos\tcount\n");
+                printf("%c\t%d\t%d\n", buffer[read_pos], read_pos, count);
+                read_pos++;
+                count--;
+            }
+            pthread_mutex_unlock(&flag);
         }
-
-        fetch_flag = 1;
-        /*starte implementing put*/
-        fetch_flag = 0;
     }
+}
+
+int main()
+{
+
+    pthread_t producer, consumer;
+    //"put" thread for adding to buffer
+    pthread_create(&producer, NULL, put, NULL);
+    //"fetch" thread for removing out of buffer
+    pthread_create(&consumer, NULL, fetch, NULL);
+
+    pthread_join(producer, NULL);
+    pthread_join(consumer, NULL);
+
+    return 0;
 }

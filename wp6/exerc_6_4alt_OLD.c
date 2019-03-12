@@ -1,3 +1,12 @@
+/* ==================================== 
+File name: exerc_6_4.c
+Date: 2019-03-12
+Group Number:02
+Members that contributed:
+Fabian
+Oliver
+Demonstration code: [----] 
+====================================== */
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/time.h>
@@ -15,16 +24,19 @@ void *time_count(void *param);
 void *read_inport(void *param);
 
 // -------- Function get_time_ms --------------------
-double get_time_ms() {
+double get_time_ms()
+{
     struct timeval t;
     gettimeofday(&t, NULL);
     return (t.tv_sec + (t.tv_usec / 1000000.0)) * 1000.0;
 }
 
-int get_time_sec() {
+int get_time_sec()
+{
     now = time(0);
-    if ((tm = localtime (&now)) == NULL) {
-        printf ("Error extracting time stuff\n");
+    if ((tm = localtime(&now)) == NULL)
+    {
+        printf("Error extracting time stuff\n");
         return 0.0;
     }
 
@@ -35,28 +47,30 @@ int get_time_sec() {
     return (double)tm->tm_sec;
 }
 
-void delay(int number_of_seconds) {
+void delay(int number_of_seconds)
+{
     // Converting time into milli_seconds
-    int milli_seconds = 1000 * number_of_seconds; 
+    int milli_seconds = 1000 * number_of_seconds;
     // Stroing start time
-    clock_t start_time = clock(); 
-    // looping till required time is not acheived 
-    while (clock() < start_time + milli_seconds) 
+    clock_t start_time = clock();
+    // looping till required time is not acheived
+    while (clock() < start_time + milli_seconds)
         ;
 }
 
 // ------------ End -------------------
-int main() {
+int main()
+{
     // Start up the thread time_count.
     pthread_t timeCountThread;
     pthread_create(&timeCountThread, NULL, time_count, NULL);
 
-    printf("\n%f", get_time_ms()/10000000);
-    
+    printf("\n%f", get_time_ms() / 10000000);
+
     // Start up the thread read_inport.
     //pthread_t readInportThread;
     //pthread_create(&readInportThread, NULL, read_inport, NULL);
-    
+
     /*
     while (program_time < 50) {
         //Print out system time every second.
@@ -65,7 +79,7 @@ int main() {
         printf("\nProgram time: %d", program_time);
     }
     */
-    
+
     pthread_join(timeCountThread, NULL);
     printf("\nJoined timeCountThread in main.");
     //pthread_join(readInportThread, NULL);
@@ -75,15 +89,18 @@ int main() {
 // --- End of main thread ------
 // ----- Tread functions –
 //--------------------------------------------
-void *time_count(void *param) {
+void *time_count(void *param)
+{
     printf("\nStarting timeCountThread.");
-    while (program_time < 50) {
+    while (program_time < 50)
+    {
         // Check system-time (get_time_ms())
         // Increase program_time by one every second.
         //printf("\nSystem time(timeCountThread): %d\tProgram time(timeCoundThread): %d", get_time_ms(), program_time);
         //int time = get_time_sec();
         double time = floor(get_time_ms() / 1000);
-        if (time > last_val) {
+        if (time > last_val)
+        {
             printf("\ntime: %f", time);
             printf("\nlast_val: %f", last_val);
             printf("\nprogram_time: %d", program_time);
@@ -97,9 +114,11 @@ void *time_count(void *param) {
 }
 //End------------------------------------
 
-void *read_inport(void *param) {
+void *read_inport(void *param)
+{
     printf("\nStarting readInportThread.");
-    while (program_time < 50) {
+    while (program_time < 50)
+    {
         // Read Inport every 5 second. (Simulate this just by print out a text : Reading Inport now)
         printf("\nReading Inport now");
     }
