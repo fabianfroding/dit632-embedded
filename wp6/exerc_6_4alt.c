@@ -1,3 +1,12 @@
+/* ==================================== 
+File name: exerc_6_4alt.c
+Date: 2019-03-12
+Group Number: 02
+Members that contributed:
+Fabian
+Oliver
+Demonstration code: [15978] 
+====================================== */
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/time.h>
