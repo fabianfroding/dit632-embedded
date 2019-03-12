@@ -1,6 +1,29 @@
-1.1. 
-1.2.
-1.3.
-1.4.
-1.5.
+/* ==================================== 
+File name: exerc_6_1.c
+Date: 2019-03-12
+Group Number:02
+Members that contributed:
+Fabian
+Oliver
+Demonstration code: [none] 
+====================================== */
+//=============== 1.1.
+2 threads are created during the execution of the program. One for the main thread and one for the thread "tid", which executes the runner function.
 
+//=============== 1.2.
+Line 16 is used to declares the variable for the thread "tid".
+Line 17 is used to delcare the variable for the attribute of the thread "tid".
+Line 20 is used to initialize the thread attribute object "attr". If NULL it uses the default values (whatever that means).
+Line 22: Prints a statement to the console.
+Line 23: Stores a user input in the global variable "max_value".
+Line 26: Waits until the thread "tid" has finished.
+
+//=============== 1.3.
+Only 1 parameter is passed to runner(). In pthread_create, the 4th argument is the value passed to the function, which in this case is NULL.
+
+//=============== 1.4.
+The runner() function knows the value of max_value becuase max_value is defined as a global variable, accesible by all threads and scopes.
+
+//=============== 1.5.
+If line 26 is omitted, the value to search for is never found, because the thread synchronisation never takes place since pthread_join is omitted.
+The rest of the main function executes before the runner function has a chance to synch with the main.
