@@ -1,11 +1,11 @@
 /* ==================================== 
-File name: exerc_6_4.c
+File name: exerc_6_4alt.c
 Date: 2019-03-12
-Group Number:02
+Group Number: 02
 Members that contributed:
 Fabian
 Oliver
-Demonstration code: [----] 
+Demonstration code: [15978] 
 ====================================== */
 #include <stdio.h>
 #include <stdlib.h>
@@ -15,6 +15,7 @@ Demonstration code: [----]
 
 int program_time; // The global time, start value 0
 double last_val;
+double last_time;
 double cTime;
 int hasReport;
 
@@ -40,9 +41,16 @@ int main()
     pthread_t readInportThread;
     pthread_create(&readInportThread, NULL, read_inport, NULL);
 
-    /*while (program_time < 50) {
+    while (program_time < 50)
+    {
         //Print out system time every second.
-    }*/
+        // Use last_time to check if program_time has incremented, if it has, then print the program_time and increment last_time by 1.
+        if (program_time > last_time)
+        {
+            printf("\nprogram_time: %d", program_time);
+            last_time++;
+        }
+    }
 
     pthread_join(timeCountThread, NULL);
     printf("\nJoined timeCountThread in main.");
@@ -60,12 +68,15 @@ void *time_count(void *param)
     {
         // Check system-time (get_time_ms())
         // Increase program_time by one every second.
+        // Here we use floor from math.h to floor down the value in order to make it comparable to the last_val. Otherwise cTime will always be > last_val (comparing ms).
+        // Also, we divide by 1000 to get the number the represents seconds.
         cTime = floor(get_time_ms() / 1000);
+        // If the current time in seconds (cTime) is > last value retrieved from the same function, we increment the program time.
         if (cTime > last_val)
         {
             //printf("\ntime: %f\nlast_val: %f\nprogram_time: %d", cTime, last_val, program_time);
-            printf("\nprogram_time: %d", program_time);
             program_time++;
+            // Set hasReport to 0 to reset the "boolean" chek for read_inport logic.
             hasReport = 0;
         }
         last_val = cTime;
@@ -82,17 +93,12 @@ void *read_inport(void *param)
     while (program_time < 50)
     {
         // Read Inport every 5 second. (Simulate this just by print out a text : Reading Inport now)
-        if (program_time % 5 == 0)
+        // hasReport is a boolean flag logic to prevent the readInport print from printing repeatedly while program time has remainder of 0 from % operator.
+        if (hasReport == 0)
         {
-            if (hasReport == 0)
-            {
+            hasReport = 1;
+            if (program_time % 5 == 0)
                 printf("\nReading Inport now");
-                hasReport = 1;
-            }
-            else
-            {
-                //hasReport = 0;
-            }
         }
     }
     // Exit thread
